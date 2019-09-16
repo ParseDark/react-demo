@@ -92,6 +92,7 @@ class Login extends Component {
 }
 
 const mapStateToProps = state => ({
+    // 建立映射关系 state->props,方便组件取用
     isLoginModalShow: state.isLoginModalShow
 })
 
