@@ -1,0 +1,25 @@
+.home {
+  padding-top: 62px;
+  .fix-header-nav {
+    padding: 10px 0;
+  }
+
+  .article-item {
+    width: 100%;
+    padding: 10px;
+    display: inline-block;
+    border-bottom: 1px solid rgba(178, 186, 194, 0.15);
+
+    .title-box {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .content-box {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}

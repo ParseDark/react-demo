@@ -1,0 +1,29 @@
+$blue: #3296fa;
+
+.header-title {
+    height: 52px;
+    line-height: 50px;
+    margin-bottom: 10px;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 0 6px #eaeaea;
+    width: 100%;
+    box-sizing: border-box;
+    position: fixed;
+    background: #fff;
+    z-index: 1;
+    .header-logo {
+        display: flex;
+        justify-content: center;
+        i {
+            color: $blue;
+            font-size: 30px;
+        }
+    }
+
+    .header-login {
+        display: flex;
+    }
+}
