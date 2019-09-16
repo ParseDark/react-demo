@@ -4,6 +4,7 @@ import Header from '../components/Header/index.jsx'
 import Home from './Home/index.jsx'
 import Details from './Details/index.jsx'
 import Mine from './Mine/index.jsx'
+import Login from './Login/index.jsx'
 
 
 class AppRouter extends React.Component {
@@ -11,6 +12,7 @@ class AppRouter extends React.Component {
         return (
             <React.Fragment>
                 <Header></Header>
+                <Login></Login>
                 <Switch>
                     <Route exact path="/" component={Home}></Route>
                     <Route exact path="/mine" component={Mine}></Route>

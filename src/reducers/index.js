@@ -1,7 +1,10 @@
 import {combineReducers} from 'redux'
-// import { aReducer, bReducer } from 'reducersPath'
+import { 
+    // authReducer, 
+    isModalShowReducer 
+} from './auth_reducer'
 
 export default combineReducers({
-    // a
-    // b
+    // auth: authReducer,
+    isLoginModalShow: isModalShowReducer
 })
