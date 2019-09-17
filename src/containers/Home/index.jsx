@@ -16,7 +16,7 @@ const { Title, Paragraph } = Typography;
 
 const mapStateToProps = state => {
     return ({
-        auth: state.auth.authenticated
+        auth: state.auth.auth.authenticated
     })
 }
 
@@ -48,7 +48,6 @@ class Home extends React.Component {
                 url: "/mock/list"
             }).then(res => {
                 const { result, success } = res.data
-                console.log(result)
                 if (success) {
                     removeLoading()
                     let data
@@ -65,8 +64,9 @@ class Home extends React.Component {
         }
 
         this.toDetails = id => {
-            const { authenticated, loginModalShow } = this.props
-            if (!authenticated) {
+            const { auth, loginModalShow } = this.props
+            debugger
+            if (auth) {
                 const { history } = this.props
                 history.push({
                     pathname: `/details/${id}`
