@@ -96,7 +96,7 @@ class Home extends React.Component {
                 <div className="list-warp">
                     {
                         this.state.articleArr.map((item, index) => (
-                            <a className="article-item" key={index} onClick={() => this.toDetails(item.sid)}>
+                            <a className="article-item" key={index} onClick={() => this.toDetails(index)}>
                                 {/* <Title level={2}>设计资源</Title> */}
                                 <Title level={4} className="title-box">{item.title}</Title>
                                 <Paragraph className="content-box">

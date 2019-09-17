@@ -1,6 +1,6 @@
 import Mock from 'mockjs'
 
-export default Mock.mock('/mock/list','get',{
+const mockActicleList = Mock.mock('/mock/list', 'get', {
     success: true,
     'userId|5': '',
     isRefresh: true,
@@ -11,3 +11,22 @@ export default Mock.mock('/mock/list','get',{
         'sid|+1': 1
     }]
 })
+
+const mockActicleDetail = Mock.mock(/mock\/details\/\d+/, 'get', {
+    success: true,
+    data: {
+        author: '@word(3, 5)',
+        img: '@url',
+        publishDate: '@date("yyyy-MM-dd")',
+        title: '@sentence(5)',
+        content: '@paragraph(10, 15)',
+        'readCount': 200,
+        'favoriteCount': 300,
+        'hasFavorite': 300,
+    }
+})
+
+export default {
+    mockActicleDetail,
+    mockActicleList
+}
