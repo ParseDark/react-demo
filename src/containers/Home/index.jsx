@@ -3,8 +3,33 @@ import { Tag, Typography } from 'antd';
 import './index.scss'
 import Axios from 'axios';
 import { addLoading, removeLoading } from '../../components/Loading/index.jsx'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import {
+    loginModalShow,
+    loginSuccess,
+    loginOut
+} from '../../actions/index'
 
 const { Title, Paragraph } = Typography;
+
+
+const mapStateToProps = state => {
+    return ({
+        auth: state.auth.authenticated
+    })
+}
+
+const mapDispatchToProps = dispatch => {
+    return bindActionCreators({
+        loginSuccess,
+        loginOut,
+        loginModalShow
+    },
+        dispatch)
+}
+
+
 
 class Home extends React.Component {
     constructor() {
@@ -39,6 +64,18 @@ class Home extends React.Component {
             })
         }
 
+        this.toDetails = id => {
+            const { authenticated, loginModalShow } = this.props
+            if (!authenticated) {
+                const { history } = this.props
+                history.push({
+                    pathname: `/details/${id}`
+                })
+            } else {
+                loginModalShow()
+            }
+        }
+
     }
 
     componentDidMount() {
@@ -59,7 +96,7 @@ class Home extends React.Component {
                 <div className="list-warp">
                     {
                         this.state.articleArr.map((item, index) => (
-                            <a className="article-item" key={index} >
+                            <a className="article-item" key={index} onClick={() => this.toDetails(item.sid)}>
                                 {/* <Title level={2}>设计资源</Title> */}
                                 <Title level={4} className="title-box">{item.title}</Title>
                                 <Paragraph className="content-box">
@@ -74,6 +111,8 @@ class Home extends React.Component {
         )
     }
 }
-
-export default Home
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Home)
 
