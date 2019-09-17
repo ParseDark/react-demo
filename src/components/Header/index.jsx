@@ -7,6 +7,19 @@ import "./index.scss"
 
 import { loginModalShow } from '../../actions/index'
 
+
+const mapStateToProps = state => {
+    return {
+        auth: state.auth.auth.authenticated
+    }
+}
+// const mapStateToProps = state => ({
+//     // 建立映射关系 state->props,方便组件取用
+//     auth: state.auth
+// })
+
+
+
 const mapDispathchToProps = dispatch => {
     return bindActionCreators({
         loginModalShow
@@ -16,7 +29,7 @@ const mapDispathchToProps = dispatch => {
 }
 
 const Header = props => {
-    const { loginModalShow } = props
+    const { loginModalShow, auth } = props
     return (
         <header>
             <nav className='header-title'>
@@ -25,9 +38,13 @@ const Header = props => {
                         <Avatar size="small" icon="user" />
                     </Link>
                 </div>
-                <div className="header-login">
-                    <Button type="primary" size="small" onClick={loginModalShow}>登录</Button>
-                </div>
+                {
+                    !auth && (
+                        <div className="header-login">
+                            <Button type="primary" size="small" onClick={loginModalShow}>登录</Button>
+                        </div>
+                    )
+                }
             </nav>
         </header>
     )
@@ -36,6 +53,6 @@ const Header = props => {
 
 
 export default connect(
-    null,
+    mapStateToProps,
     mapDispathchToProps
 )(Header)

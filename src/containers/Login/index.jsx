@@ -4,9 +4,11 @@ import { bindActionCreators } from 'redux'
 import ModalContainer from './ModalContainer.jsx'
 import {
     // signinUser, 
+    loginSuccess,
     loginModalHide
 } from '../../actions/index'
 import './index.scss'
+import Axios from 'axios'
 
 class Login extends Component {
     constructor(props) {
@@ -34,9 +36,6 @@ class Login extends Component {
 
     toLogin = () => {
         const { userName, password } = this.state
-        const {
-            // signinUser, 
-            loginModalHide } = this.props
 
         if (userName === '' || userName !== 'admin') {
             alert('请输入正确的账号')
@@ -46,13 +45,26 @@ class Login extends Component {
             return
         }
 
-        // signinUser({ userName, password }).then(res => {
-        //     if (res.success) {
+        this.fetchLogin()
+    }
+
+    fetchLogin = () => {
+        const { userName, password } = this.state
+        const { loginModalHide, loginSuccess } = this.props
+        Axios({
+            url: '/mock/login',
+            method: 'post',
+            data: {
+                userName,
+                password
+            }
+        }).then(res => {
+            const { success } = res.data
+            if (success) {
+                loginSuccess()
                 loginModalHide()
-        //     }
-        // }).catch(err => {
-        //     console.error(err)
-        // })
+            }
+        })
     }
 
     render() {
@@ -62,30 +74,30 @@ class Login extends Component {
             zIndex: visible ? '1' : '-1'
         }
         return (
-                <ModalContainer>
+            <ModalContainer>
                 <div className={`${visible ? "modal fade show" : "modal fade"}`}
-                        style={divStyle}>
-                        <div className="modal-backdrop"></div>
-                        <div className="modal-dialog">
-                            <div className="modal-content">
-                                <div className="modal-header">
-                                    <i className="iconfont" onClick={loginModalHide}>
-                                        X
+                    style={divStyle}>
+                    <div className="modal-backdrop"></div>
+                    <div className="modal-dialog">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <i className="iconfont" onClick={loginModalHide}>
+                                    X
                                     </i>
-                                    <h4 className="modal-title">登录</h4>
-                                </div>
-                                <div className="modal-body">
-                                    <input type='text' placeholder="请输入账号" onChange={this.handleChange} value={this.state.userName}></input>
-                                    <input type='password' placeholder="请输入密码" onChange={this.handleChange} value={this.state.password}></input>
-                                    <input type="submit" className="submit-btn" value="登录" onClick={this.toLogin}></input>
-                                    <a href="">忘记密码</a>
-                                    <p className="login-tips">登录协议</p>
-                                </div>
+                                <h4 className="modal-title">登录</h4>
+                            </div>
+                            <div className="modal-body">
+                                <input type='text' placeholder="请输入账号" onChange={this.handleChange} value={this.state.userName}></input>
+                                <input type='password' placeholder="请输入密码" onChange={this.handleChange} value={this.state.password}></input>
+                                <input type="submit" className="submit-btn" value="登录" onClick={this.toLogin}></input>
+                                <a href="">忘记密码</a>
+                                <p className="login-tips">登录协议</p>
                             </div>
                         </div>
-
                     </div>
-                </ModalContainer>
+
+                </div>
+            </ModalContainer>
 
         )
     }
@@ -99,6 +111,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => {
     return bindActionCreators({
         // signinUser,
+        loginSuccess,
         loginModalHide
     },
         dispatch)

@@ -26,7 +26,15 @@ const mockActicleDetail = Mock.mock(/mock\/details\/\d+/, 'get', {
     }
 })
 
+const mockLogin = Mock.mock(/mock\/login/, 'post', {
+    success: true,
+    data: {
+        
+    }
+})
+
 export default {
     mockActicleDetail,
-    mockActicleList
+    mockActicleList,
+    mockLogin
 }

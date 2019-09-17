@@ -6,7 +6,7 @@ import {
     AUTH_STATUS_LOGINOUT
 } from '../actions/types'
 
-export function isModalShowReducer(state = { visible: false, auth: { authenticated: false } }, actions) {
+export function isModalShowReducer(state = { visible: false }, actions) {
     switch (actions.type) {
         case LOGIN_MODAL_SHOW:
             return { ...state, visible: true }
