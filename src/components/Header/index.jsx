@@ -54,7 +54,7 @@ const Header = props => {
                         </div>
                     ) :
                         (
-                            <Link to="/">
+                            <Link to="/mine">
                                 <Avatar size="small" icon="user" />
                             </Link>
                         )
