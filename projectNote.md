@@ -50,5 +50,5 @@ actions包含对store中的state不同的操作, state改变只能由reducer操�
     * 引入actions/index
     * 建立mapStateProps/mapDispatchToProps
         * mapStateProps: 建立state与props的映射关系， 并附加监听, 我们从props取state中对应的值.
-        * mapDispatchToProps: 简历dispatch与props的映射关系， 我们从props取每个dispatch.
+        * mapDispatchToProps: 建立dispatch与props的映射关系， 我们从props取每个dispatch.
     * 使用react-redux的connect函数： 使用偏函数，预设mapStateProps和mapDispatchToProps, 然后包裹组件本身， 完成链接
