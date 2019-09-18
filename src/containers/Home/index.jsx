@@ -47,7 +47,7 @@ class Home extends React.Component {
             Axios({
                 url: "/mock/list"
             }).then(res => {
-                const { result, success } = res.data
+                const { success } = res.data
                 if (success) {
                     removeLoading()
                     let data
