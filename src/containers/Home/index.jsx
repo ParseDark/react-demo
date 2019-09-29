@@ -104,7 +104,11 @@ class Home extends React.Component {
                             </a>
                         ))
                     }
-
+                    <div className='loadMore'>
+                        <span className='loadMoreText'>
+                            加载更多
+                        </span>
+                    </div>
                 </div>
             </div >
         )

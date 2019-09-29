@@ -1,9 +1,19 @@
 .home {
   padding-top: 62px;
   .fix-header-nav {
-    padding: 10px 0;
+    padding: 10px 10px;
   }
+  .loadMore {
+    margin: 10px 10px;
+    background-color: rgba(178, 186, 194, 0.15);
+    border-radius: 4px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
 
+    .loadMoreText {
+    }
+  }
   .article-item {
     width: 100%;
     padding: 10px;
