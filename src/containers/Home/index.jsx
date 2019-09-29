@@ -65,7 +65,6 @@ class Home extends React.Component {
 
         this.toDetails = id => {
             const { auth, loginModalShow } = this.props
-            debugger
             if (auth) {
                 const { history } = this.props
                 history.push({
@@ -115,4 +114,3 @@ export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(Home)
-
