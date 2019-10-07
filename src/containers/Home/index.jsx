@@ -25,7 +25,6 @@ const Home = props => {
 
     const toDetails = id => {
         const { auth, loginModalShow } = props
-        debugger
         if (auth) {
             const { history } = props
             history.push({

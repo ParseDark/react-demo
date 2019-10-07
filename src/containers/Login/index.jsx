@@ -37,7 +37,6 @@ const Login = (props) => {
 
     const toLogin = () => {
         const { userName, password } = userInfo
-        debugger
         if (userName === '' || userName !== 'admin') {
             alert('请输入正确的账号')
             return
