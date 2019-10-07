@@ -6,21 +6,18 @@ import Details from './Details/index.jsx'
 import Mine from './Mine/index.jsx'
 import Login from './Login/index.jsx'
 
-
-class AppRouter extends React.Component {
-    render() {
-        return (
-            <React.Fragment>
-                <Header></Header>
-                <Login></Login>
-                <Switch>
-                    <Route exact path="/" component={Home}></Route>
-                    <Route exact path="/mine" component={Mine}></Route>
-                    <Route exact path="/details/:id" component={Details}></Route>
-                </Switch>
-            </React.Fragment>
-        )
-    }
+const AppRouter = () => {
+    return (
+        <React.Fragment>
+            <Header></Header>
+            <Login></Login>
+            <Switch>
+                <Route exact path="/" component={Home}></Route>
+                <Route exact path="/mine" component={Mine}></Route>
+                <Route exact path="/details/:id" component={Details}></Route>
+            </Switch>
+        </React.Fragment>
+    )
 }
 
 export default AppRouter
